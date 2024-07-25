@@ -30,6 +30,13 @@ public class AdminUserPage {
 	@FindBy(xpath="//h5[normalize-space()='Alert!']" )WebElement statusalertfield;
 	
 	
+	public String fakername()
+	{
+		PageUtility pageutility=new PageUtility();
+		String name=pageutility.fakerStrings();
+		return name;
+	}
+	
 	 public AdminUserPage navigation(String url)
 	 {
 		 driver.navigate().to(url);

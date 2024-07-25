@@ -16,12 +16,11 @@ public class AdminUserTest extends Base {
 		String username="admin";
 		String password="admin";
 		String url="https://groceryapp.uniqassosiates.com/admin/list-admin";
-		Faker faker = new Faker();
-		String adminusername=faker.address().firstName();
+		AdminUserPage adminuserpage=new AdminUserPage(driver);
+		String adminusername=adminuserpage.fakername();
 		String adminpassword="imavan";
 		LoginPage loginpages=new LoginPage(driver);
 		loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
-		AdminUserPage adminuserpage=new AdminUserPage(driver);
 		adminuserpage.navigation(url).addNewUser(adminusername, adminpassword);
 		boolean alertstatus=adminuserpage.userCreationAlert();
 		Assert.assertTrue(alertstatus,"Error occoured,Unable to create new User");
