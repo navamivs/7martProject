@@ -24,7 +24,7 @@ public class AdminUserTest extends Base {
 		AdminUserPage adminuserpage=new AdminUserPage(driver);
 		adminuserpage.navigation(url).addNewUser(adminusername, adminpassword);
 		boolean alertstatus=adminuserpage.userCreationAlert();
-		Assert.assertTrue(alertstatus,"Error occoured!The user was unable to create");
+		Assert.assertTrue(alertstatus,"Error occoured!Unable to create new User");
 	}
 	
 	
