@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtility {
-public static final long EXPlICITWAITTIME=20;
+public static final long EXPlICITWAITTIME=10;
 public static final long IMPLICITWAITTIME=10;
 	public void ExplicitWaitUntilElementToBeClickable( WebDriver driver,WebElement Element)
 	{
@@ -31,5 +31,9 @@ public static final long IMPLICITWAITTIME=10;
 		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(EXPlICITWAITTIME));
 		wait.until(ExpectedConditions.elementToBeSelected(Element));
 	}
-	
+	public void ExplicitWaitUntilPresenceOfAllElementsLocatedBy( WebDriver driver,WebElement Elements)
+	{
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(EXPlICITWAITTIME));
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) Elements));
+	}
 }

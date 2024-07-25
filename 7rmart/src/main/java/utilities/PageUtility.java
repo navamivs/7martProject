@@ -96,42 +96,6 @@ public void mouseDragAndDrop(WebDriver driver,WebElement sourcewebelement,WebEle
 	Actions actions=new Actions(driver);
 	actions.dragAndDrop(sourcewebelement, destinationwebelement).build().perform();
 }
-public void fileUpload(WebElement filefield,String filepath)
-{
-	filefield.sendKeys(filepath);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
