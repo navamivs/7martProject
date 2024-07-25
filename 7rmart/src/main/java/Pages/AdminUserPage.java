@@ -116,10 +116,8 @@ public class AdminUserPage {
 			username=usernamefield.getText();
 			if(username.equals(usernameforstatuschange))
 			{
-				System.out.println(usernameforstatuschange);
 				WebElement statusbutton=driver.findElement(By.xpath("//tbody/tr["+i+"]/td[5]//a[1]"));
 				pageutility.forceClickUsingJavaScriptExecutor(driver, statusbutton);
-				System.out.println(usernameforstatuschange);
 				break;
 			}
 			
