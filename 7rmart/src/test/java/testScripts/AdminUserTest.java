@@ -31,7 +31,7 @@ public class AdminUserTest extends Base {
 	{
 		String username="admin";
 		String password="admin";
-		String deleteuser="Bijith Frieda";//change value at each run
+		String deleteuser="Jina";//change value at each run
 		String url="https://groceryapp.uniqassosiates.com/admin/list-admin";
 		LoginPage loginpages=new LoginPage(driver);
 		loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();

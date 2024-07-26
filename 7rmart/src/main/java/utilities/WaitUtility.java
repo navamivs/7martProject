@@ -10,17 +10,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtility {
 public static final long EXPlICITWAITTIME=10;
-public static final long IMPLICITWAITTIME=10;
+public static final long IMPLICITWAITTIME=30;
 	public void ExplicitWaitUntilElementToBeClickable( WebDriver driver,WebElement Element)
 	{
 		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(EXPlICITWAITTIME));
 		wait.until(ExpectedConditions.elementToBeClickable(Element));
 	}
-	public void ExplicitWaitUntilElementToBeVisible( WebDriver driver,WebElement Element)
+	public void ExplicitWaitUntilElementToBeVisible( WebDriver driver, WebElement Element)
 	{
 		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(EXPlICITWAITTIME));
-		wait.until(ExpectedConditions.visibilityOfElementLocated((By) Element));
+		wait.until(ExpectedConditions.visibilityOfElementLocated((By)Element));	
 	}
+	
 	public void ExplicitWaitUntilAlertMatches( WebDriver driver,WebElement Element)
 	{
 		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(EXPlICITWAITTIME));

@@ -33,7 +33,7 @@ public class AdminUserPage {
 	public String fakername()
 	{
 		PageUtility pageutility=new PageUtility();
-		String name=pageutility.fakerStrings();
+		String name=pageutility.fakerNameStrings();
 		return name;
 	}
 	
@@ -65,6 +65,7 @@ public class AdminUserPage {
 		PageUtility pageutility=new PageUtility();
 		int pages=pagelength.size();
 		int rowsize=rowlength.size();
+		int flag=0;
 		String deleteusername = null;
 		for(int j=1;j<=pages;j++)
 		{
@@ -84,11 +85,12 @@ public class AdminUserPage {
 				WebElement deletebutton=driver.findElement(By.xpath("//tbody/tr["+i+"]/td[5]//a[3]"));
 				pageutility.forceClickUsingJavaScriptExecutor(driver, deletebutton);
 				pageutility.AcceptNormalOrConfirmationAlert(driver);
+				flag=1;
 				break;
 			}
 			
 			}
-			if(usernamedelete.equals(deleteusername))
+			if(flag==1)
 			{
 				break;
 			}
@@ -108,6 +110,7 @@ public class AdminUserPage {
 		PageUtility pageutility=new PageUtility();
 		int pages=pagelength.size();
 		int rowsize=rowlength.size();
+		int flag=0;
 		String username = null;
 		for(int j=1;j<=pages;j++)
 		{
@@ -116,7 +119,7 @@ public class AdminUserPage {
 				WebElement eachtablenumber=driver.findElement(By.xpath("//a[normalize-space()="+j+"]"));
 				pageutility.forceClickUsingJavaScriptExecutor(driver, eachtablenumber);
 			}
-			for(int i=1;i<rowsize;i++)
+			for(int i=1;i<=rowsize;i++)
 			{
 			
 			WebElement usernamefield=driver.findElement(By.xpath("//tbody/tr["+i+"]/td[1]"));
@@ -125,11 +128,12 @@ public class AdminUserPage {
 			{
 				WebElement statusbutton=driver.findElement(By.xpath("//tbody/tr["+i+"]/td[5]//a[1]"));
 				pageutility.forceClickUsingJavaScriptExecutor(driver, statusbutton);
+				flag=1;
 				break;
 			}
 			
 			}
-			if(usernameforstatuschange.equals(username))
+			if(flag==1)
 			{
 				break;
 			}

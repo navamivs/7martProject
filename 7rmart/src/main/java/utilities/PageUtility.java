@@ -11,6 +11,8 @@ import org.openqa.selenium.devtools.idealized.Javascript;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import com.github.javafaker.Faker;
+
 public class PageUtility {
 	
 	public void selectAValueUsingSelectByVisibleText(WebElement element,String text)
@@ -18,6 +20,7 @@ public class PageUtility {
 		Select select=new Select(element);
 		select.selectByVisibleText(text);
 	}
+	
 	public void selectAValueUsingSelectByIndex(WebElement element,int indexnumber)
 	{
 		Select select=new Select(element);
@@ -97,7 +100,12 @@ public void mouseDragAndDrop(WebDriver driver,WebElement sourcewebelement,WebEle
 	actions.dragAndDrop(sourcewebelement, destinationwebelement).build().perform();
 }
 
-
+public String fakerNameStrings()
+{
+Faker faker = new Faker();
+String name =faker.address().firstName();
+return name;
+}
 
 
 }
