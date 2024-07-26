@@ -8,7 +8,7 @@ public class ListTest extends Base
 {
 	
 	@Test
-	public void verifyWhetherNewTittleIsAbleAdd()
+	public void verifyWhetherNewTittleNameIsAbleToAdd()
 	{
 	String username="admin";
 	String password="admin";
@@ -21,7 +21,7 @@ public class ListTest extends Base
 	ListPage listpage=new ListPage(driver);
 	listpage.navigation(url).createNewListPage(tittle,description,pagename);
 	boolean status=listpage.alertForListCreation();
-	Assert.assertTrue(status,"Error Occoured ,Tittle is not added ");
+	Assert.assertTrue(status,"Error Occoured ,New Tittle  name is unable to added ");
     }
 	
 	@Test
@@ -38,7 +38,7 @@ public class ListTest extends Base
 	ListPage listpage=new ListPage(driver);
 	listpage.navigation(url).createNewListPage(tittle,description,pagename);
 	boolean status=listpage.alertForDuplicatePage();
-	Assert.assertTrue(status,"Duplicate page names are allowed to add");
+	Assert.assertTrue(status,"The field allowed to add duplicate tittle name which is an unexpected functionality");
     }
 	
 	@Test
@@ -53,7 +53,7 @@ public class ListTest extends Base
 		ListPage listpage=new ListPage(driver);
 		listpage.navigation(url).searchWithTittleName(tittlename);
 		boolean status=listpage.validateTheCreatedNewListPage(tittlename);
-		Assert.assertTrue(status,"Valid tittlename was inable to search");
+		Assert.assertTrue(status,"Valid tittlename was unable to search");
 		
 	}
 	
