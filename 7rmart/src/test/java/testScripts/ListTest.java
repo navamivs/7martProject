@@ -21,7 +21,7 @@ public class ListTest extends Base
 	ListPage listpage=new ListPage(driver);
 	listpage.navigation(url).createNewListPage(tittle,description,pagename);
 	boolean status=listpage.alertForListCreation();
-	Assert.assertTrue(status,"Error Occoured ,New Tittle  name is unable to added ");
+	Assert.assertTrue(status,"Error Occoured ,New Tittle  name is unable to add ");
     }
 	
 	@Test
