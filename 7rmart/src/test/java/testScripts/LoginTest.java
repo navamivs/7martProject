@@ -1,62 +1,71 @@
 package testScripts;
 
+import org.testng.annotations.Test;
+
+import com.sun.net.httpserver.Authenticator.Retry;
+
+import org.testng.AssertJUnit;
+
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import Pages.LoginPage;
+import utilities.ExcelReadUtility;
 
 public class LoginTest extends Base{
 	
 	
 	
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class)
 	public void verifyUserIsAbleToLoginWithCorrectCredentials()
 	{
-		String username="admin";
-		String password="admin";
+		String username=ExcelReadUtility.getString(1, 0,"LoginPage");
+		String password=ExcelReadUtility.getString(1, 1,"LoginPage");
 		LoginPage loginpages=new LoginPage(driver);
 		loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 		boolean dashboardstatus=loginpages.dashboardpage();
-		Assert.assertTrue(dashboardstatus,"User is unable to login with correct Credentials");
+		assertTrue(dashboardstatus,"User is unable to login with correct Credentials");
 			
 	}
 	
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class)
 	public void verifyUserIsAbleToLoginWithWrongUsernameCorrectPassword()
 	{
-		String username="navami";
-		String password="admin";
+		String username=ExcelReadUtility.getString(2, 0,"LoginPage");
+		String password=ExcelReadUtility.getString(2, 1,"LoginPage");
 		LoginPage loginpages=new LoginPage(driver);
 		loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 		boolean alertstatus=loginpages.presenceOfAlert();
-		Assert.assertTrue(alertstatus,"User is able to login with Wrong Username & CorrectPassword");
+		assertTrue(alertstatus,"User is able to login with Wrong Username & CorrectPassword");
 		
 	}
 	
 	
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class)
 	public void verifyUserIsAbleToLoginWithCorrectUsernameWrongPassword()
 	{
-		String username="admin";
-		String password="navamivs";
+		String username=ExcelReadUtility.getString(3, 0,"LoginPage");
+		String password=ExcelReadUtility.getString(3, 1,"LoginPage");
 		LoginPage loginpages=new LoginPage(driver);
 		loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 		boolean alertstatus=loginpages.presenceOfAlert();
 		Assert.assertTrue(alertstatus,"User is able to login with Correct Username & WrongPassword");
 		
 	}
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class)
 	public void verifyUserIsAbleToLoginWithIncorrectUserNameAndIncorrectPassword()
 	{
 
-		String username="admin123";
-		String password="navamivs";
+		String username=ExcelReadUtility.getString(4, 0,"LoginPage");
+		String password=ExcelReadUtility.getString(4, 1,"LoginPage");
 		LoginPage loginpages=new LoginPage(driver);
 		loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 		boolean alertstatus=loginpages.presenceOfAlert();
-		Assert.assertTrue(alertstatus,"User is able to login with Wrong Username & Wrong Password");
+		assertTrue(alertstatus,"User is able to login with Wrong Username & Wrong Password");
 	}
 	
 	

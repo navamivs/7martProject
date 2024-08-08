@@ -18,16 +18,16 @@ public class AdminUserPage {
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//a[text()=' New']") WebElement newfield;
-	@FindBy(xpath="//input[@id='username']") WebElement adminusernamefield;
-	@FindBy(xpath="//input[@id='password']") WebElement adminpasswordfield;
-	@FindBy(xpath="//button[@name='Create']") WebElement savefield;
-	@FindBy(xpath="//select[@id='user_type']") WebElement selectfield;
-	@FindBy(xpath="//h5[text()=' Alert!']") WebElement alertfield;
-	@FindBy(xpath="//a[@class='page-link']") List<WebElement >pagelength;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']") WebElement deletealert;
-	@FindBy(xpath="//tbody//tr") List<WebElement >rowlength;
-	@FindBy(xpath="//h5[normalize-space()='Alert!']" )WebElement statusalertfield;
+	@FindBy(xpath="//a[text()=' New']") private WebElement newfield;
+	@FindBy(xpath="//input[@id='username']")private WebElement adminusernamefield;
+	@FindBy(xpath="//input[@id='password']")private WebElement adminpasswordfield;
+	@FindBy(xpath="//button[@name='Create']")private WebElement savefield;
+	@FindBy(xpath="//select[@id='user_type']")private WebElement selectfield;
+	@FindBy(xpath="//h5[text()=' Alert!']") private WebElement alertfield;
+	@FindBy(xpath="//a[@class='page-link']") private List<WebElement >pagelength;
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")private WebElement deletealert;
+	@FindBy(xpath="//tbody//tr")private List<WebElement >rowlength;
+	@FindBy(xpath="//h5[normalize-space()='Alert!']" )private WebElement statusalertfield;
 	
 	
 	public String fakername()
@@ -43,14 +43,32 @@ public class AdminUserPage {
 		 return this;
 	 }
 	
-	public AdminUserPage addNewUser(String username,String password)	
+	public AdminUserPage newFieldClick()	
 	{
 		newfield.click();
-		adminusernamefield.sendKeys(username);
-		adminpasswordfield.sendKeys(password);
+		return this;
+	}
+	
+	public AdminUserPage selectOption()
+	{
 		PageUtility pageutility=new PageUtility();
 		pageutility.selectAValueUsingSelectByIndex(selectfield, 2);	
-		savefield.click();
+		return this;
+	}
+	public AdminUserPage save()
+	{
+	savefield.click();
+	return this;
+	}
+	public AdminUserPage sendUserName(String username)
+	{
+		adminusernamefield.sendKeys(username);
+		return this;
+	}
+	
+	public AdminUserPage sendPassword(String password)
+	{
+		adminpasswordfield.sendKeys(password);
 		return this;
 	}
 	

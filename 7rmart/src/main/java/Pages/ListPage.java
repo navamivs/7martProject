@@ -18,34 +18,58 @@ public class ListPage {
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']") WebElement newfield;
-	@FindBy(xpath="//input[@id='title']") WebElement tittlefield;
-	@FindBy(xpath="//div[@role='textbox']//p") WebElement descriptionfield;
-	@FindBy(xpath="//input[@id='page']") WebElement pagefield;
-	@FindBy(xpath="//input[@id='main_img']") WebElement choosefilefield;
-	@FindBy(xpath="//button[@name='create']") WebElement savefield;
-	@FindBy(xpath="//li[@class='page-item active'or@class='page-item']")List< WebElement> nooftablepages;
-	@FindBy(xpath="//tbody//tr") List<WebElement> rowcount;
-	@FindBy(xpath="//*[@data-dismiss='alert']") WebElement creationalert;
-	@FindBy(xpath="//a[@class='btn btn-rounded btn-primary']") WebElement search;
-	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']") WebElement alredypaegeexistalert;
-	@FindBy(xpath="//input[@placeholder='Title']") WebElement tittlesearchdield;
-	@FindBy(xpath="//button[@name='Search']") WebElement tittlesearch;
+	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']")private WebElement newfield;
+	@FindBy(xpath="//input[@id='title']")private WebElement tittlefield;
+	@FindBy(xpath="//div[@role='textbox']//p") private WebElement descriptionfield;
+	@FindBy(xpath="//input[@id='page']") private WebElement pagefield;
+	@FindBy(xpath="//input[@id='main_img']")private WebElement choosefilefield;
+	@FindBy(xpath="//button[@name='create']")private WebElement savefield;
+	@FindBy(xpath="//li[@class='page-item active'or@class='page-item']")private List< WebElement> nooftablepages;
+	@FindBy(xpath="//tbody//tr")private List< WebElement> rowcount;
+	@FindBy(xpath="//*[@data-dismiss='alert']") private WebElement creationalert;
+	@FindBy(xpath="//a[@class='btn btn-rounded btn-primary']")private WebElement search;
+	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")private WebElement alredypaegeexistalert;
+	@FindBy(xpath="//input[@placeholder='Title']")private WebElement tittlesearchdield;
+	@FindBy(xpath="//button[@name='Search']")private WebElement tittlesearch;
 	
 	 public ListPage navigation(String url)
 	 {
 		 driver.navigate().to(url);
 		 return this;
 	 }
-	 public ListPage createNewListPage(String tittle,String description,String pagename)
+	 public ListPage newFieldClick()
 	 {
 		 FileUtility fileutility=new FileUtility();
 		 newfield.click();
+		 return this;
+	 }
+	 public ListPage sendTittle(String tittle)
+	 {
 		 tittlefield.sendKeys(tittle);
+		 return this;
+	 }
+	 public ListPage descriptionfield(String description)
+	 {
 		 descriptionfield.sendKeys(description);
+		 return this;
+	 }
+	 public ListPage sendKeys(String pagename)
+	 {
 		 pagefield.sendKeys(pagename);
+		 return this;
+	 }
+	 
+	 
+	 public ListPage fileUpload()
+	 {
+		 FileUtility fileutility=new FileUtility();
 		 String filepath="/Users/navamivimaldassuprabha/Documents/FileuploadTest//iphone.png";
 		 fileutility.fileUpload(choosefilefield,filepath);
+		 return this;
+	 }
+		 
+	 public ListPage saveField()
+	 {
 		 savefield.click();
 		 return this;
 	 }
@@ -74,7 +98,7 @@ public class ListPage {
 	 
 	public boolean validateTheCreatedNewListPage(String tittlename)
 	 {
-		 ListPage listpage=new ListPage(driver);
+		 //ListPage listpage=new ListPage(driver);
 		 boolean status=false;
 		 String actualtittle= null;
 		int pagesize= nooftablepages.size();

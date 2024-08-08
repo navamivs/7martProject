@@ -1,59 +1,65 @@
 package testScripts;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+
+import static org.testng.Assert.assertTrue;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import Pages.ListPage;
 import Pages.LoginPage;
+import utilities.ExcelReadUtility;
 
 public class ListTest extends Base
 {
 	
-	@Test
+	@Test(groups= {"Regression"},retryAnalyzer=retry.Retry.class,description="New Tittle Creation")
 	public void verifyWhetherNewTittleNameIsAbleToAdd()
 	{
-	String username="admin";
-	String password="admin";
-	String url="https://groceryapp.uniqassosiates.com/admin/list-page";
-	String tittle="Iphone 15 pro";	
-	String description="Advanced dual-camera system with 12MP Wide and Ultra Wide cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby Vision HDR recording";
-	String pagename="Phones";//Change at run
+	String username=ExcelReadUtility.getString(1, 0,"LoginPage");
+	String password=ExcelReadUtility.getString(1, 1,"LoginPage");
+	String url= ExcelReadUtility.getString(1, 0,"ListPage");                        
+	String tittle=ExcelReadUtility.getString(1, 1,"ListPage"); //change it if you create again                   
+	String description= ExcelReadUtility.getString(1, 2,"ListPage");                   
+	String pagename= ExcelReadUtility.getString(1, 3,"ListPage");                          
 	LoginPage loginpages=new LoginPage(driver);
 	loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 	ListPage listpage=new ListPage(driver);
-	listpage.navigation(url).createNewListPage(tittle,description,pagename);
+	listpage.navigation(url).newFieldClick().sendTittle(tittle).descriptionfield(description).sendKeys(pagename).fileUpload().saveField();
 	boolean status=listpage.alertForListCreation();
-	Assert.assertTrue(status,"Error Occoured ,New Tittle  name is unable to add ");
+	assertTrue(status,"Error Occoured ,New Tittle  name is unable to add ");
     }
 	
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="The field should not allow to add duplicate tittle")
 	public void verifyWhetherDuplicateTittleIsNotEnabledToAdd()
 	{
-	String username="admin";
-	String password="admin";
-	String url="https://groceryapp.uniqassosiates.com/admin/list-page";
-	String tittle="Iphone 15 pro";
+	String username=ExcelReadUtility.getString(1, 0,"LoginPage");
+	String password=ExcelReadUtility.getString(1, 1,"LoginPage");
+	String url=ExcelReadUtility.getString(1, 0,"ListPage");  
+	String tittle=ExcelReadUtility.getString(1, 1,"ListPage"); 
 	String description="";
-	String pagename="Best Travel partner12_02_2023_07_57_30";//you can change if you need
+	String pagename= ExcelReadUtility.getString(2, 3,"ListPage"); //you can change if you need
 	LoginPage loginpages=new LoginPage(driver);
 	loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 	ListPage listpage=new ListPage(driver);
-	listpage.navigation(url).createNewListPage(tittle,description,pagename);
+	listpage.navigation(url).newFieldClick().sendTittle(tittle).descriptionfield(description).sendKeys(pagename).fileUpload().saveField();
 	boolean status=listpage.alertForDuplicatePage();
-	Assert.assertTrue(status,"The field allowed to add duplicate tittle name which is an unexpected functionality");
+	assertTrue(status,"The field allowed to add duplicate tittle name which is an unexpected functionality");
     }
 	
-	@Test
+	@Test(groups= {"Smoke"},retryAnalyzer=retry.Retry.class,description="Searching using tittle name")
 	public void verifyWhetherSearchTabAllowsToSearchValidTittlesName()
 	{
-		String username="admin";
-		String password="admin";
+		String username=ExcelReadUtility.getString(1, 0,"LoginPage");
+		String password=ExcelReadUtility.getString(1, 1,"LoginPage");
 		String url="https://groceryapp.uniqassosiates.com/admin/list-page";
-		String tittlename="Lavender";//you can change if you need 
+		String tittlename=ExcelReadUtility.getString(1, 4,"ListPage");//you can change if you need 
 		LoginPage loginpages=new LoginPage(driver);
 		loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 		ListPage listpage=new ListPage(driver);
 		listpage.navigation(url).searchWithTittleName(tittlename);
 		boolean status=listpage.validateTheCreatedNewListPage(tittlename);
-		Assert.assertTrue(status,"Valid tittlename was unable to search");
+		assertTrue(status,"Valid tittlename was unable to search");
 		
 	}
 	

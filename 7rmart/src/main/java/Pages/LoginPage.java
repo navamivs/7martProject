@@ -14,11 +14,11 @@ public class LoginPage  {
 		PageFactory.initElements(driver,this);//Mandatory then only pagefactory approach will work
 	}
 	
-	@FindBy (xpath="//input[@placeholder='Username']") WebElement usernamefield;
-	@FindBy (xpath="//input[@placeholder='Password']") WebElement passwordfield;
-	@FindBy (xpath="//*[@type='submit']") WebElement LoginField;
-	@FindBy (xpath="//*[text()=' Alert!']") WebElement alert;
-	@FindBy (xpath="(//*[text()='Manage Pages'])[2]") WebElement dashboardelement;
+	@FindBy (xpath="//input[@placeholder='Username']")private WebElement usernamefield;
+	@FindBy (xpath="//input[@placeholder='Password']")private WebElement passwordfield;
+	@FindBy (xpath="//*[@type='submit']")private WebElement LoginField;
+	@FindBy (xpath="//*[text()=' Alert!']")private WebElement alert;
+	@FindBy (xpath="(//*[text()='Manage Pages'])[2]")private WebElement dashboardelement;
 	
 	public LoginPage enterUsernameOnUserNameField(String username)
 	{
