@@ -6,6 +6,8 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import Pages.AdminUserPage;
 import Pages.ListPage;
 import Pages.LoginPage;
 import utilities.ExcelReadUtility;
@@ -23,8 +25,8 @@ public class ListTest extends Base
 	String description= ExcelReadUtility.getString(1, 2,"ListPage");                   
 	String pagename= ExcelReadUtility.getString(1, 3,"ListPage");                          
 	LoginPage loginpages=new LoginPage(driver);
-	loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 	ListPage listpage=new ListPage(driver);
+	loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 	listpage.navigation(url).newFieldClick().sendTittle(tittle).descriptionfield(description).sendKeys(pagename).fileUpload().saveField();
 	boolean status=listpage.alertForListCreation();
 	assertTrue(status,"Error Occoured ,New Tittle  name is unable to add ");

@@ -1,5 +1,6 @@
 package testScripts;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.sun.net.httpserver.Authenticator.Retry;
@@ -56,19 +57,24 @@ public class LoginTest extends Base{
 		Assert.assertTrue(alertstatus,"User is able to login with Correct Username & WrongPassword");
 		
 	}
-	@Test(retryAnalyzer=retry.Retry.class)
-	public void verifyUserIsAbleToLoginWithIncorrectUserNameAndIncorrectPassword()
+	@Test(dataProvider="LoginProvider",retryAnalyzer=retry.Retry.class)
+	public void verifyUserIsAbleToLoginWithIncorrectUserNameAndIncorrectPassword(String username,String password)
 	{
-
-		String username=ExcelReadUtility.getString(4, 0,"LoginPage");
-		String password=ExcelReadUtility.getString(4, 1,"LoginPage");
 		LoginPage loginpages=new LoginPage(driver);
 		loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 		boolean alertstatus=loginpages.presenceOfAlert();
 		assertTrue(alertstatus,"User is able to login with Wrong Username & Wrong Password");
 	}
 	
-	
+	@DataProvider(name = "LoginProvider")
+	public Object[][] getDataFromTestData() 
+	{
+		return new Object[][] {
+			
+			new Object[]{ ExcelReadUtility.getString(4, 0, "LoginPage"), ExcelReadUtility.getString(4, 1, "LoginPage") },
+			new Object[]{ "navami", "navami"},
+		};
+	}
 	
 	
 

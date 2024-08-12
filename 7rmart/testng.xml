@@ -8,9 +8,9 @@
   <test thread-count="5" name="Test">
     <classes>
      
-      <class name="testScripts.LoginTest">
-      <methods>
-      <include name="verifyUserIsAbleToLoginWithWrongUsernameCorrectPassword">
+      <class name="testScripts.ManageProductTest">
+        <methods>
+      <include name="verfifywhetherListProductsCountUpdatesWhenAProductIsDeleted">
       </include>
       </methods>
       </class>

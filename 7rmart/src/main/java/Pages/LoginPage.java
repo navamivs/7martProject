@@ -33,10 +33,10 @@ public class LoginPage  {
 	}
 	
 	
-	public LoginPage clickOnLoginButton()
+	public AdminUserPage clickOnLoginButton()
 	{
 		LoginField.click();
-		return this;
+		return new AdminUserPage(driver);
 	}
 	
 	public boolean dashboardpage()

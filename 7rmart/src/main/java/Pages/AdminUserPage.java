@@ -30,12 +30,7 @@ public class AdminUserPage {
 	@FindBy(xpath="//h5[normalize-space()='Alert!']" )private WebElement statusalertfield;
 	
 	
-	public String fakername()
-	{
-		PageUtility pageutility=new PageUtility();
-		String name=pageutility.fakerNameStrings();
-		return name;
-	}
+	
 	
 	 public AdminUserPage navigation(String url)
 	 {

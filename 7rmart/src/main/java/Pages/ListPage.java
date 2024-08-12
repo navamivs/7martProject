@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import Constants.Constants;
 import utilities.FileUtility;
 import utilities.PageUtility;
 
@@ -63,8 +65,7 @@ public class ListPage {
 	 public ListPage fileUpload()
 	 {
 		 FileUtility fileutility=new FileUtility();
-		 String filepath="/Users/navamivimaldassuprabha/Documents/FileuploadTest//iphone.png";
-		 fileutility.fileUpload(choosefilefield,filepath);
+		 fileutility.fileUpload(choosefilefield,Constants.iphonefile);
 		 return this;
 	 }
 		 

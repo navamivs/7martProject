@@ -13,6 +13,7 @@ import com.github.javafaker.Faker;
 import Pages.AdminUserPage;
 import Pages.LoginPage;
 import utilities.ExcelReadUtility;
+import utilities.RandomDataGeneration;
 
 public class AdminUserTest extends Base {
 
@@ -22,12 +23,12 @@ public class AdminUserTest extends Base {
 		String username=ExcelReadUtility.getString(1, 0,"LoginPage");
 		String password=ExcelReadUtility.getString(1, 1,"LoginPage");
 		String url=ExcelReadUtility.getString(1, 0,"AdminUser");
-		AdminUserPage adminuserpage=new AdminUserPage(driver);
-		String adminusername=adminuserpage.fakername();
+		AdminUserPage adminuserpage;
+		String adminusername=RandomDataGeneration.fakerNameStrings();
 		String adminpassword=ExcelReadUtility.getString(1, 1,"AdminUser");
 		LoginPage loginpages=new LoginPage(driver);
-		loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
-		adminuserpage.navigation(url).newFieldClick().sendUserName(adminusername).sendPassword(adminpassword).selectOption().save();
+		adminuserpage=loginpages.enterUsernameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton()
+		.navigation(url).newFieldClick().sendUserName(adminusername).sendPassword(adminpassword).selectOption().save();
 		boolean alertstatus=adminuserpage.userCreationAlert();
 		assertTrue(alertstatus,"Error occoured,Unable to create new User");
 	}

@@ -100,12 +100,7 @@ public void mouseDragAndDrop(WebDriver driver,WebElement sourcewebelement,WebEle
 	actions.dragAndDrop(sourcewebelement, destinationwebelement).build().perform();
 }
 
-public String fakerNameStrings()
-{
-Faker faker = new Faker();
-String name =faker.address().firstName();
-return name;
-}
+
 
 
 }

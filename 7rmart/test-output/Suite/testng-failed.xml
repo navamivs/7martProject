@@ -7,13 +7,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="testScripts.LoginTest">
+      <class name="testScripts.ManageProductTest">
         <methods>
-          <include name="verifyUserIsAbleToLoginWithCorrectCredentials"/>
           <include name="browserQuit"/>
           <include name="initialize"/>
+          <include name="verfifywhetherListProductsCountUpdatesWhenAProductIsDeleted"/>
         </methods>
-      </class> <!-- testScripts.LoginTest -->
+      </class> <!-- testScripts.ManageProductTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
