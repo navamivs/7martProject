@@ -18,14 +18,14 @@ public class ListSubCategoriesPage {
      }
 	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-sub-category'][normalize-space()='More info']") private WebElement moreinfo ;
-	@FindBy(xpath="//i[@class=' fa fa-search']") WebElement search;
-	@FindBy(xpath="//*[@id='un']")WebElement selectfield;
-	@FindBy(xpath="//button[@name='Search']") WebElement insidesearchfield;
-	@FindBy(xpath="//tbody/tr[1]/td[2]") WebElement categoryfield;
-	@FindBy(xpath="//tbody/tr[1]/td[5]/a[1]/i[1]")WebElement editfield;
-	@FindBy(xpath="//*[@id='main_img']") WebElement fileuploadfield;
-	@FindBy(xpath="//button[@name='update']")WebElement updatefield;
-	@FindBy(xpath="//h5[normalize-space()='Alert!']")WebElement alert;
+	@FindBy(xpath="//i[@class=' fa fa-search']")private WebElement search;
+	@FindBy(xpath="//*[@id='un']")private WebElement selectfield;
+	@FindBy(xpath="//button[@name='Search']")private WebElement insidesearchfield;
+	@FindBy(xpath="//tbody/tr[1]/td[2]")private WebElement categoryfield;
+	@FindBy(xpath="//tbody/tr[1]/td[5]/a[1]/i[1]")private WebElement editfield;
+	@FindBy(xpath="//*[@id='main_img']")private WebElement fileuploadfield;
+	@FindBy(xpath="//button[@name='update']")private WebElement updatefield;
+	@FindBy(xpath="//h5[normalize-space()='Alert!']")private WebElement alert;
 	public ListSubCategoriesPage moreinfoclick()
 	{
 		moreinfo.click();
