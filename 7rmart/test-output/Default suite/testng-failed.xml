@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.ListSubCategoriesTest">
+      <class name="testScripts.AdminUserTest">
         <methods>
+          <include name="verifyWhetherARandomuserIsableToBeDeleted"/>
           <include name="browserQuit"/>
+          <include name="verifyWhetherARandomuserStatusIsableToChange"/>
           <include name="initialize"/>
-          <include name="verifyImageFieldUpatedForSearchedCategory"/>
+          <include name="verifyWhetherAnewUserIsAbleToBeCreated"/>
         </methods>
-      </class> <!-- testScripts.ListSubCategoriesTest -->
+      </class> <!-- testScripts.AdminUserTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

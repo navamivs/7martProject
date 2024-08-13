@@ -29,7 +29,6 @@ public class ManageProductPage {
 			String beforedeletionstring=listproducttext.getText();
 			String textcountsubstring=beforedeletionstring.substring(beforedeletionstring.indexOf("(")+1,beforedeletionstring.indexOf(")"));
 			int count=Integer.parseInt(textcountsubstring);
-			System.out.println(count);
 			int expectedcount=count-1;
 			globalexpectedcount=expectedcount;
 			return this;

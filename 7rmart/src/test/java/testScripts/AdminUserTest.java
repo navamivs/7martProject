@@ -34,7 +34,7 @@ public class AdminUserTest extends Base {
 	}
 	
 	@Test(retryAnalyzer=retry.Retry.class,description="User Deletion")
-	public void verifyWhetherAuserIsableToBeDeleted()
+	public void verifyWhetherARandomuserIsableToBeDeleted()
 	{
 		String username=ExcelReadUtility.getString(1, 0,"LoginPage");
 		String password=ExcelReadUtility.getString(1, 1,"LoginPage");
@@ -49,7 +49,7 @@ public class AdminUserTest extends Base {
 	}
 	
 	@Test(groups= {"Regression"},retryAnalyzer=retry.Retry.class,description="Checking the status change" )
-	public void verifyWhetherAuserStatusIsableToChange()
+	public void verifyWhetherARandomuserStatusIsableToChange()
 	{
 		String username=ExcelReadUtility.getString(1, 0,"LoginPage");
 		String password=ExcelReadUtility.getString(1, 1,"LoginPage");
